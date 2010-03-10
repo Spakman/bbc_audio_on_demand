@@ -31,5 +31,10 @@ module BBCAudioOnDemand
       station = Station.new("Radio 4")
       assert_equal 2, station.all_brands.size
     end
+
+    def test_to_s
+      station = Station.new("Radio 4")
+      assert_equal station.name, station.to_s
+    end
   end
 end

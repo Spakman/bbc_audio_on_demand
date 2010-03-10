@@ -7,8 +7,6 @@ module BBCAudioOnDemand
   class Station
     attr_reader :name, :xml_document
 
-    include LiveStreaming
-
     def initialize(name, feed = nil)
       if name =~ /^BBC /
         @name = name
@@ -47,6 +45,10 @@ module BBCAudioOnDemand
         content = Net::HTTP.get(URI.parse(schedule_feed_url))
         @xml_document = Nokogiri::XML.parse content
       end
+    end
+
+    def to_s
+      @name
     end
   end
 end
