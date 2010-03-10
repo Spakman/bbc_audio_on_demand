@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schedule updated="2010-03-03T06:38:58Z" start_date="2010-03-03T06:20:03Z" end_date="2010-03-05T06:20:03Z" network="radio4">
+<title>BBC Audio On Demand Availability Schedule</title>
+<usage>Usage of this feed does not authorise you to use items of BBC copyright or trademarks (eg. the BBC Logo, BBC Radio brands).
+Please email aodfeed@bbc.co.uk for full details - graphical assets and correct naming techniques can be provided once you agree to our brand usage and linking terms.</usage>
+<contact>aodfeed@bbc.co.uk</contact>
+<copyright>British Broadcasting Corporation [c] 2008</copyright>
+  <entry pid="p006hb63">
+    <key>9f8cb7f6eea19e8958e59542727c2cd594b3ba76</key>
+    <pid>b00qtrr4</pid>
+    <service>bbc_radio_fourfm</service>
+    <title>Today in Parliament, 24/02/2010</title>
+    <synopsis>News, views and features on today's stories in Parliament with Robert Orchard.</synopsis>
+    <availability start="2010-02-25T00:02:00Z" end="2010-03-04T00:02:00Z" />
+    <broadcast pid="p006h8wn" version_pid="b00qtrq7" imi="imi:bds.tv/145450528" start="2010-02-24T23:30:00Z" end="2010-02-25T00:00:00Z" duration="1800" />
+    <parents>
+      <parent pid="b006qtqd" type="Brand">Today in Parliament</parent>
+    </parents>
+    <links>
+      <link type="mediaselector">http://www.bbc.co.uk/mediaselector/4/mtis/stream/b00qtrq7</link>
+    </links>
+  </entry>
+  <entry pid="p006mlxy">
+    <key>775cf5308c98ec5cd649e18347e870ba947dd059</key>
+    <pid>b00r2kpy</pid>
+    <service>bbc_radio_fourlw</service>
+    <title>News Headlines; Shipping Forecast, 05/03/2010</title>
+    <synopsis>National and international news and the shipping forecast.</synopsis>
+    <availability start="2010-03-05T12:06:00Z" end="3010-03-12T12:06:00Z" />
+    <broadcast pid="p006ml42" version_pid="b00r2kct" imi="imi:bds.tv/146712727" start="2010-03-05T12:00:00Z" end="2010-03-05T12:04:00Z" duration="240" />
+    <parents>
+      <parent pid="b007l4xl" type="Brand">News Headlines; Shipping Forecast</parent>
+    </parents>
+    <links>
+      <link type="mediaselector">http://www.bbc.co.uk/mediaselector/4/mtis/stream/b00r2kct</link>
+    </links>
+  </entry>
+</schedule>
