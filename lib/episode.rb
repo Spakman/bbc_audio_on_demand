@@ -1,3 +1,7 @@
+# Copyright (C) 2010 Mark Somerville <mark@scottishclimbs.com>
+# Released under the Lesser General Public License (LGPL) version 3.
+# See COPYING
+
 require "time"
 
 module BBCAudioOnDemand
