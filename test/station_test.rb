@@ -2,8 +2,14 @@ require "test/unit"
 require_relative "../lib/station"
 
 class Net::HTTP
-  def self.get(uri)
-    File.read("#{File.dirname(__FILE__)}/data/r4_truncated.xml")
+  FakeResponse = Struct.new(:code, :body)
+
+  def request(request)
+    if request.path == "/radio/aod/availability/radio4.xml"
+      FakeResponse.new("200", File.read("#{File.dirname(__FILE__)}/data/r4_truncated.xml"))
+    else
+      FakeResponse.new("404", nil)
+    end
   end
 end
 
@@ -29,7 +35,13 @@ module BBCAudioOnDemand
 
     def test_fetching_feed
       station = Station.new("Radio 4")
+      assert station.fetch_and_parse_feed_if_required
       assert_equal 2, station.all_brands.size
+    end
+
+    def test_fetching_errored_feed
+      station = Station.new("Radio 1")
+      assert_raises(Net::HTTPServerException) { station.fetch_and_parse_feed_if_required }
     end
 
     def test_to_s

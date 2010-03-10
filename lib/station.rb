@@ -42,8 +42,16 @@ module BBCAudioOnDemand
 
     def fetch_and_parse_feed_if_required
       if @xml_document.nil?
-        content = Net::HTTP.get(URI.parse(schedule_feed_url))
-        @xml_document = Nokogiri::XML.parse content
+        uri = URI.parse(schedule_feed_url)
+        http = Net::HTTP.new(uri.host, uri.port)
+        request = Net::HTTP::Get.new(uri.request_uri)
+        response = http.request(request)
+
+        if response.code == "200"
+          @xml_document = Nokogiri::XML.parse response.body
+        else
+          raise Net::HTTPServerException.new(nil, nil)
+        end
       end
     end
 
