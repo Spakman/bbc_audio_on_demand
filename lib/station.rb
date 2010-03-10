@@ -40,6 +40,10 @@ module BBCAudioOnDemand
       brands.uniq
     end
 
+    def available_brands
+      all_brands.delete_if { |brand| !brand.has_available_episodes? }
+    end
+
     def fetch_and_parse_feed_if_required
       if @xml_document.nil?
         uri = URI.parse(schedule_feed_url)

@@ -33,6 +33,12 @@ module BBCAudioOnDemand
       assert_equal 20, station.all_brands.size
     end
 
+    def test_available_brands
+      feed = File.read("#{File.dirname(__FILE__)}/data/r4.xml")
+      station = Station.new("Radio 4", feed)
+      assert_equal 18, station.available_brands.size
+    end
+
     def test_fetching_feed
       station = Station.new("Radio 4")
       assert station.fetch_and_parse_feed_if_required
