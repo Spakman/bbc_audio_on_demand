@@ -41,5 +41,10 @@ module BBCAudioOnDemand
     def test_to_s
       assert_equal @shipping_forecast.name, @shipping_forecast.to_s
     end
+
+    def test_sort
+      brands = [ Brand.new(nil, nil, "B"), Brand.new(nil, nil, "C"), Brand.new(nil, nil, "A") ].sort
+      assert_equal %w{ A B C }, brands.map(&:name)
+    end
   end
 end

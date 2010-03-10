@@ -53,5 +53,19 @@ module BBCAudioOnDemand
     def to_s
       name
     end
+
+    def <=>(object)
+      if object.class == self.class
+        if @name > object.name
+          1
+        elsif @name == object
+          0
+        else
+          -1
+        end
+      else
+        0
+      end
+    end
   end
 end
