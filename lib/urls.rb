@@ -15,6 +15,10 @@ module BBCAudioOnDemand
     URLS["BBC Radio 6"] = "r6.asx"
     URLS["BBC Radio 7"] = "r7.asx"
     URLS["BBC Asian Network"] = "ran.asx"
+
+    def streaming_playlist_url
+      "http://www.bbc.co.uk/radio/listen/live/#{URLS[@name]}"
+    end
   end
 
   module ScheduleFeeds
@@ -35,5 +39,9 @@ module BBCAudioOnDemand
     URLS["BBC Radio Foyle"] = "radiofoyle.xml"
     URLS["BBC Radio Wales"] = "radiowales.xml"
     URLS["BBC Radio Cymru"] = "radiocymru.xml"
+
+    def schedule_feed_url
+      "http://www.bbc.co.uk/radio/aod/availability/#{URLS[@name]}"
+    end
   end
 end

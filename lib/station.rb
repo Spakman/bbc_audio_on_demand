@@ -11,6 +11,9 @@ module BBCAudioOnDemand
   class Station
     attr_reader :name, :xml_document
 
+    include BBCAudioOnDemand::LiveStreaming
+    include BBCAudioOnDemand::ScheduleFeeds
+
     def initialize(name, feed = nil)
       if name =~ /^BBC /
         @name = name
@@ -23,14 +26,6 @@ module BBCAudioOnDemand
       elsif feed.respond_to? :length
         @xml_document = Nokogiri::XML.parse feed
       end
-    end
-
-    def streaming_playlist_url
-      "http://www.bbc.co.uk/radio/listen/live/#{LiveStreaming::URLS[@name]}"
-    end
-
-    def schedule_feed_url
-      "http://www.bbc.co.uk/radio/aod/availability/#{ScheduleFeeds::URLS[@name]}"
     end
 
     def all_brands
