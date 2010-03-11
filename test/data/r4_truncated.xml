@@ -26,7 +26,7 @@ Please email aodfeed@bbc.co.uk for full details - graphical assets and correct n
     <service>bbc_radio_fourlw</service>
     <title>News Headlines; Shipping Forecast, 05/03/2010</title>
     <synopsis>National and international news and the shipping forecast.</synopsis>
-    <availability start="2010-03-05T12:06:00Z" end="3010-03-12T12:06:00Z" />
+    <availability start="2010-03-05T12:06:00Z" end="2037-03-12T12:06:00Z" />
     <broadcast pid="p006ml42" version_pid="b00r2kct" imi="imi:bds.tv/146712727" start="2010-03-05T12:00:00Z" end="2010-03-05T12:04:00Z" duration="240" />
     <parents>
       <parent pid="b007l4xl" type="Brand">News Headlines; Shipping Forecast</parent>
