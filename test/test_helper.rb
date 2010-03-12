@@ -10,11 +10,15 @@ class Net::HTTP
   def self.outside_uk(&block)
     @location = :international
     yield
+  end
+
+  def self.inside_uk(&block)
     @location = :uk
+    yield
   end
 
   def self.location
-    @location || :uk
+    @location
   end
 
   def request(request)

@@ -60,37 +60,29 @@ module BBCAudioOnDemand
       title
     end
 
-    # Retrieves and returns the URI of the ASX playlist for clients
-    # inside the UK.
-    #
-    # TODO: refactor the HTTP stuff into a single place.
-    def uk_playlist_uri
+    def playlist_uri
       uri = URI.parse(@media_selector_uri)
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Get.new(uri.request_uri)
       response = http.request(request)
 
       if response.code == "200"
-        playlist_xml_document = Nokogiri::XML.parse response.body
-        return playlist_xml_document.css("media[service='iplayer_intl_stream_wma_uk_concrete'] connection").first["href"]
-      else
-        raise Net::HTTPServerException.new("A 200 response was not received from #{@media_selector_uri}", nil)
-      end
-    end
+        media_xml = Nokogiri::XML.parse response.body
 
-    # Retrieves and returns the URI of the ASX playlist for clients
-    # outside the UK.
-    #
-    # TODO: refactor the HTTP stuff into a single place.
-    def international_playlist_uri
-      uri = URI.parse(@media_selector_uri)
-      http = Net::HTTP.new(uri.host, uri.port)
-      request = Net::HTTP::Get.new(uri.request_uri)
-      response = http.request(request)
+        uk_connection = media_xml.css("media[service='iplayer_intl_stream_wma_uk_concrete'] connection").first
 
-      if response.code == "200"
-        playlist_xml_document = Nokogiri::XML.parse response.body
-        return playlist_xml_document.css("media[service='iplayer_intl_stream_wma_lo_concrete'] connection").first["href"]
+        if uk_connection
+          uk_connection["href"]
+        else
+          international_connection = media_xml.css("media[service='iplayer_intl_stream_wma_lo_concrete'] connection").first
+
+          if international_connection
+            international_connection["href"]
+          else
+            raise "Could not find a playlist URI."
+          end
+        end
+
       else
         raise Net::HTTPServerException.new("A 200 response was not received from #{@media_selector_uri}", nil)
       end

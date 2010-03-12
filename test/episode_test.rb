@@ -37,13 +37,12 @@ module BBCAudioOnDemand
       assert_equal @episode.title, @episode.to_s
     end
 
-    def test_wma_uk_playlist_uri
-      assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_uk_concrete", @episode.uk_playlist_uri
-    end
-
-    def test_wma_international_playlist_uri
+    def test_wma_playlist_uri_for_current_location
+      Net::HTTP.inside_uk do
+        assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_uk_concrete", @episode.playlist_uri
+      end
       Net::HTTP.outside_uk do
-        assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_lo_concrete", @episode.international_playlist_uri
+        assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_lo_concrete", @episode.playlist_uri
       end
     end
   end
