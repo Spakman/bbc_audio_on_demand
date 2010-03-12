@@ -1,6 +1,4 @@
-require "test/unit"
-require_relative "../lib/brand"
-require_relative "../lib/station"
+require_relative "test_helper"
 
 module BBCAudioOnDemand
   class BrandTest < Test::Unit::TestCase

@@ -2,6 +2,7 @@
 # Released under the Lesser General Public License (LGPL) version 3.
 # See COPYING
 
+require "net/http"
 require "time"
 
 module BBCAudioOnDemand
@@ -57,6 +58,20 @@ module BBCAudioOnDemand
 
     def to_s
       title
+    end
+
+    def playlist_url
+      uri = URI.parse(@media_selector_url)
+      http = Net::HTTP.new(uri.host, uri.port)
+      request = Net::HTTP::Get.new(uri.request_uri)
+      response = http.request(request)
+
+      if response.code == "200"
+        playlist_xml_document = Nokogiri::XML.parse response.body
+        return playlist_xml_document.css("media[service='iplayer_intl_stream_wma_uk_concrete'] connection").first["href"]
+      else
+        raise Net::HTTPServerException.new("A 200 response was not received from #{@media_selector_url}", nil)
+      end
     end
   end
 end

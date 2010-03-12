@@ -1,7 +1,4 @@
-require "test/unit"
-require_relative "../lib/episode"
-require_relative "../lib/brand"
-require_relative "../lib/station"
+require_relative "test_helper"
 
 module BBCAudioOnDemand
   class EpisodeTest < Test::Unit::TestCase
@@ -38,6 +35,10 @@ module BBCAudioOnDemand
 
     def test_to_s
       assert_equal @episode.title, @episode.to_s
+    end
+
+    def test_wma_playlist_url
+      assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_uk_concrete", @episode.playlist_url
     end
   end
 end

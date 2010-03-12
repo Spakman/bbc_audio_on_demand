@@ -1,17 +1,4 @@
-require "test/unit"
-require_relative "../lib/station"
-
-class Net::HTTP
-  FakeResponse = Struct.new(:code, :body)
-
-  def request(request)
-    if request.path == "/radio/aod/availability/radio4.xml"
-      FakeResponse.new("200", File.read("#{File.dirname(__FILE__)}/data/r4_truncated.xml"))
-    else
-      FakeResponse.new("404", nil)
-    end
-  end
-end
+require_relative "test_helper"
 
 module BBCAudioOnDemand
   class StationTest < Test::Unit::TestCase
