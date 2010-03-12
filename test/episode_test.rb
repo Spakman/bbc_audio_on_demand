@@ -24,7 +24,7 @@ module BBCAudioOnDemand
       assert_equal 1800, @episode.duration
       assert_kind_of Time, @episode.start
       assert_kind_of Time, @episode.end
-      assert_equal "http://www.bbc.co.uk/mediaselector/4/mtis/stream/b00r0tfb", @episode.media_selector_url
+      assert_equal "http://www.bbc.co.uk/mediaselector/4/mtis/stream/b00r0tfb", @episode.media_selector_uri
     end
 
     def test_available
@@ -37,8 +37,14 @@ module BBCAudioOnDemand
       assert_equal @episode.title, @episode.to_s
     end
 
-    def test_wma_playlist_url
-      assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_uk_concrete", @episode.playlist_url
+    def test_wma_uk_playlist_uri
+      assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_uk_concrete", @episode.uk_playlist_uri
+    end
+
+    def test_wma_international_playlist_uri
+      Net::HTTP.outside_uk do
+        assert_equal "http://www.bbc.co.uk/mediaselector/4/asx/b00r0tfb/iplayer_intl_stream_wma_lo_concrete", @episode.international_playlist_uri
+      end
     end
   end
 end

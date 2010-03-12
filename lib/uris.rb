@@ -69,7 +69,7 @@ module BBCAudioOnDemand
     INTERNATIONAL_STATIONS["BBC Arabic"] =  "http://www.bbc.co.uk/arabic/meta/tx/nb/arabic_live_au_nb.asx"
     INTERNATIONAL_STATIONS["BBC Russian"] = "http://www.bbc.co.uk/russian/meta/tx/nb/russian_live_au_nb.asx"
 
-    def streaming_playlist_url
+    def streaming_playlist_uri
       if UK_STATIONS[@name]
         "http://www.bbc.co.uk/radio/listen/live/#{UK_STATIONS[@name]}"
       else
@@ -140,7 +140,7 @@ module BBCAudioOnDemand
 
     STATIONS["BBC World Service"] = "worldservice.xml"
 
-    def schedule_feed_url
+    def schedule_feed_uri
       "http://www.bbc.co.uk/radio/aod/availability/#{STATIONS[@name]}"
     end
   end

@@ -4,7 +4,7 @@
 
 require "net/http"
 require "nokogiri"
-require_relative "urls"
+require_relative "uris"
 require_relative "brand"
 
 module BBCAudioOnDemand
@@ -45,7 +45,7 @@ module BBCAudioOnDemand
 
     def fetch_and_parse_feed_if_required
       if @xml_document.nil?
-        uri = URI.parse(schedule_feed_url)
+        uri = URI.parse(schedule_feed_uri)
         http = Net::HTTP.new(uri.host, uri.port)
         request = Net::HTTP::Get.new(uri.request_uri)
         response = http.request(request)
@@ -53,7 +53,7 @@ module BBCAudioOnDemand
         if response.code == "200"
           @xml_document = Nokogiri::XML.parse response.body
         else
-          raise Net::HTTPServerException.new(nil, nil)
+          raise Net::HTTPServerException.new("A 200 response was not received from #{schedule_feed_uri}", nil)
         end
       end
     end

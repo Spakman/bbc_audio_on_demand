@@ -6,12 +6,12 @@ module BBCAudioOnDemand
       assert_equal "BBC Radio 4", Station.new("Radio 4").name
     end
 
-    def test_streaming_playlist_url
-      assert_equal "http://www.bbc.co.uk/radio/listen/live/r4.asx", Station.new("Radio 4").streaming_playlist_url
+    def test_streaming_playlist_uri
+      assert_equal "http://www.bbc.co.uk/radio/listen/live/r4.asx", Station.new("Radio 4").streaming_playlist_uri
     end
 
-    def test_schedule_feed_url
-      assert_equal "http://www.bbc.co.uk/radio/aod/availability/radio4.xml", Station.new("Radio 4").schedule_feed_url
+    def test_schedule_feed_uri
+      assert_equal "http://www.bbc.co.uk/radio/aod/availability/radio4.xml", Station.new("Radio 4").schedule_feed_uri
     end
 
     def test_all_brands
