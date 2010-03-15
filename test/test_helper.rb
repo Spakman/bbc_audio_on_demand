@@ -5,8 +5,6 @@ require_relative "../lib/brand"
 require_relative "../lib/station"
 
 class Net::HTTP
-  FakeResponse = Struct.new(:code, :body)
-
   def self.outside_uk(&block)
     @location = :international
     yield
@@ -21,6 +19,9 @@ class Net::HTTP
     @location
   end
 
+  FakeResponse = Struct.new(:code, :body)
+
+  # Stub out the HTTP request response to return some known data.
   def request(request)
     if request.path == "/radio/aod/availability/radio4.xml"
       FakeResponse.new("200", File.read("#{File.dirname(__FILE__)}/data/r4_truncated.xml"))
@@ -30,6 +31,8 @@ class Net::HTTP
       else
         FakeResponse.new("200", File.read("#{File.dirname(__FILE__)}/data/media_selector_international.xml"))
       end
+    elsif request.path == "/radio/listen/live/r4.asx"
+      FakeResponse.new("200", File.read("#{File.dirname(__FILE__)}/data/r4.asx"))
     else
       FakeResponse.new("404", nil)
     end
