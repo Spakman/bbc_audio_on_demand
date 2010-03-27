@@ -1,0 +1,18 @@
+Warning
+===
+
+This is *very* fresh code that is still in development.
+
+It's new, please don't judge me on this code just now (although it's not too
+bad). You'd be better off looking at something more complete, like:
+
+http://github.com/Spakman/jobby/blob/master/lib/server.rb
+
+
+BBC radio on demand
+===
+
+This library is a small set of classes to make accessing and traversing the BBC
+radio on demand (iPlayer for radio, basically) XML feeds. The feeds cover
+around seven days of scheduling and are updated every three or so hours (I
+think).
