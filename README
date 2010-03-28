@@ -1,18 +1,39 @@
 Warning
 ===
 
-This is *very* fresh code that is still in development.
+This is *very* fresh code that is still in development. Of course, comments,
+suggestions, ideas, critisisms, random facts about anything whatsoever or jokes
+are always welcome.
 
-It's new, please don't judge me on this code just now (although it's not too
-bad). You'd be better off looking at something more complete, like:
+It's extremely new, please don't judge me on this code just now(!) (although
+it's not too bad, I'm not happy with inconsistencies in the way instances of
+the different classes are instantiated). If you're in the mood for judging code
+quality, you may be better off looking at something more complete, like:
 
 http://github.com/Spakman/jobby/blob/master/lib/server.rb
 
+(or not - seeing a development process is as important as more complete code,
+in my opinion)
 
-BBC radio on demand
+
+BBC audio on demand
 ===
 
 This library is a small set of classes to make accessing and traversing the BBC
-radio on demand (iPlayer for radio, basically) XML feeds. The feeds cover
-around seven days of scheduling and are updated every three or so hours (I
-think).
+audio on demand (iPlayer for radio, basically) XML feeds easier. The feeds
+cover around seven days of scheduling which the BBC update every three or so
+hours (I think).
+
+Also, BBCAudioOnDemand::LiveStreaming contains all of the URIs for the live ASX
+XML files that the BBC produce.
+
+
+Me
+===
+
+It's only me on this project just now. All are welcome (unless I don't think
+you're code's good enough - if you disagree, fork away!).
+
+I'm Mark Somerville <mark@scottishclimbs.com>
+@_Spakman
+http://mark.scottishclimbs.com/
